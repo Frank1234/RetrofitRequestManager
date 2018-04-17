@@ -1,6 +1,6 @@
 # RetrofitRequestManager
 
-Class that can manage caching and offline Retrofit usage. For Kotlin with RXJava only.
+Manages caching and offline Retrofit usage. For Kotlin with RXJava only.
 
 ### Usage
 
