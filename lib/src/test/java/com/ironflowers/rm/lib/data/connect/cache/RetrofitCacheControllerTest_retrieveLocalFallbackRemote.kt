@@ -1,6 +1,6 @@
 package com.ironflowers.rm.lib.data.connect.cache
 
-import com.ironflowers.rm.lib.data.connect.RetrofitCallManager
+import com.ironflowers.rm.lib.data.connect.call.RetrofitCallManager
 import com.ironflowers.rm.lib.data.connect.model.RetrofitResponse
 import io.reactivex.Single
 import org.junit.Before

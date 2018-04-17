@@ -1,15 +1,9 @@
 package com.ironflowers.rm.lib.data.connect.cache
 
-import android.net.http.HttpResponseCache
-import android.support.annotation.VisibleForTesting
-import com.ironflowers.rm.lib.data.connect.RetrofitCallManager
 import com.ironflowers.rm.lib.data.connect.model.RetrofitResponse
 import io.reactivex.Flowable
-import io.reactivex.Observable
 import io.reactivex.Single
-import io.reactivex.internal.operators.single.SingleInternalHelper.toObservable
 import java.util.*
-import java.util.Locale.filter
 
 /**
  * Controls remote and local storage retrieval. Eases the use of certain caching policies.

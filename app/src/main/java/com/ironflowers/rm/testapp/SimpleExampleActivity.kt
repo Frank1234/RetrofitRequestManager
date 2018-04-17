@@ -1,16 +1,12 @@
 package com.ironflowers.rm.testapp
 
-import android.annotation.SuppressLint
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.telecom.Call
 import android.widget.TextView
-import com.ironflowers.rm.lib.data.connect.RetrofitCallManager
+import com.ironflowers.rm.lib.data.connect.call.RetrofitCallManager
 import com.ironflowers.rm.lib.data.connect.cache.CacheController
 import com.ironflowers.rm.lib.data.connect.cache.RetrofitCacheController
 import com.ironflowers.rm.lib.data.connect.model.RetrofitResponse
-import com.squareup.moshi.Moshi
-import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

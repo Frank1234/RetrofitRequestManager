@@ -1,15 +1,10 @@
 package com.ironflowers.rm.lib.data.connect.cache
 
-import android.net.http.HttpResponseCache
 import android.support.annotation.VisibleForTesting
-import com.ironflowers.rm.lib.data.connect.RetrofitCallManager
+import com.ironflowers.rm.lib.data.connect.call.RetrofitCallManager
 import com.ironflowers.rm.lib.data.connect.model.RetrofitResponse
 import io.reactivex.Flowable
-import io.reactivex.Observable
 import io.reactivex.Single
-import io.reactivex.internal.operators.single.SingleInternalHelper.toObservable
-import java.util.*
-import java.util.Locale.filter
 
 @VisibleForTesting
 const val CACHE_HEADER_FORCE_LOCAL = "only-if-cached, max-stale=" + Integer.MAX_VALUE

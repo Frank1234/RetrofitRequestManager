@@ -1,15 +1,11 @@
 package com.ironflowers.rm.lib.data.connect.cache
 
-import android.util.Log
-import com.ironflowers.rm.lib.data.connect.RetrofitCallManager
+import com.ironflowers.rm.lib.data.connect.call.RetrofitCallManager
 import com.ironflowers.rm.lib.data.connect.model.RetrofitResponse
 import io.reactivex.Single
 import io.reactivex.schedulers.TestScheduler
-import org.json.JSONException
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito
-import java.net.SocketTimeoutException
 import java.util.concurrent.TimeUnit
 
 class RetrofitCacheControllerTest_retrieveLocalAndRemote {
