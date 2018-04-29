@@ -2,6 +2,8 @@
 
 Manages caching and offline Retrofit usage. For Kotlin with RXJava only.
 
+NOTE: This library is in production and not ready for use yet.
+
 ### Usage
 
 [The example activity](https://github.com/Frank1234/RetrofitRequestManager/blob/master/app/src/main/java/com/ironflowers/rm/testapp/SimpleExampleActivity.kt) shows a simple example.
