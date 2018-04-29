@@ -8,6 +8,7 @@ import android.widget.TextView
 import com.ironflowers.rm.lib.data.connect.call.RetrofitCallManager
 import com.ironflowers.rm.lib.data.connect.cache.CacheController
 import com.ironflowers.rm.lib.data.connect.cache.RetrofitCacheController
+import com.ironflowers.rm.lib.data.connect.cache.interceptor.DoNotCacheErrorsNetworkInterceptor
 import com.ironflowers.rm.lib.data.connect.model.RetrofitResponse
 import io.reactivex.Flowable
 import io.reactivex.Single
@@ -32,7 +33,8 @@ class SimpleExampleActivity : AppCompatActivity() {
     val cachingEnabledfOkHttpClient by lazy {
         OkHttpClient.Builder()
                 .cache(Cache(getCacheDir(), OKHTTP_CACHE_SIZE_BYTES)) // enable caching
-                .build()
+                .addNetworkInterceptor(DoNotCacheErrorsNetworkInterceptor())
+                .build() // TODO maybe get this out with an extension function? (so it becomes a one liner for the user)
     }
 
     // Create a very simple REST adapter which points to an example API.
@@ -46,13 +48,12 @@ class SimpleExampleActivity : AppCompatActivity() {
     }
 
     // Create an instance of our GitHub API interface.
-    val myApi by lazy { retrofit.create(ExampleCachingInterface::class.java) }
-
+    val myApi by lazy { retrofit.create(ExampleCachingApi::class.java) }
 
     // Create our cache controller.
     val retrofitCacheController: CacheController by lazy { RetrofitCacheController(RetrofitCallManager()) }
 
-    interface ExampleCachingInterface {
+    interface ExampleCachingApi {
         @GET("etag/etag")
         fun doSomeExampleGet(
                 @Header("Cache-Control") cacheControlHeader: String): Single<Any> // you can use Gson, Moshi or whatever parser to let Retrofit return a parsed object instead of this Any
@@ -63,7 +64,7 @@ class SimpleExampleActivity : AppCompatActivity() {
         setContentView(R.layout.activity_test)
     }
 
-    fun clearText() {
+    private fun clearText() {
         myTextView.text = null
     }
 

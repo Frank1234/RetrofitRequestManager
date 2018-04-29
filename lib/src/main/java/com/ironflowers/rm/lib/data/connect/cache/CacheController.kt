@@ -11,7 +11,7 @@ import java.util.*
 interface CacheController {
 
     /**
-     * Fetches data from local cache.
+     * Fetches data from local cache. When no cache is found, a 504 (no cache) is emitted as [RetrofitResponse.Local.Failure].
      *
      * @param httpHandler method that does the actual api call. [cacheControlHeaderValue] is the value to use in
      * the cache control header of your retrofit or other http call (in retrofit, the value to set on: @Header("Cache-Control")).
@@ -45,6 +45,7 @@ interface CacheController {
 
     /**
      * Fetches data from local cache. On failure / not found, it tries to fetch it from the server.
+     * "Local failure" includes cached failure responses from the server.
      *
      * @param httpHandler method that does the actual api call. [cacheControlHeaderValue] is the value to use in
      * the cache control header of your retrofit or other http call (in retrofit, the value to set on: @Header("Cache-Control")).

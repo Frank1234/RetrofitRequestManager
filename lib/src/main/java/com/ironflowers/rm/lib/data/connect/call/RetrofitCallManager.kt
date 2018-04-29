@@ -5,6 +5,7 @@ import android.util.Log
 import com.ironflowers.rm.lib.data.connect.model.RetrofitResponse
 import io.reactivex.Single
 import retrofit2.HttpException
+import java.util.concurrent.CancellationException
 import java.util.concurrent.ConcurrentHashMap
 
 /**
@@ -12,6 +13,19 @@ import java.util.concurrent.ConcurrentHashMap
  * simultaneously but instead connects the second subscriber to the same observable.
  */
 class RetrofitCallManager {
+
+    // TODO: subscription outside + inside (relay)
+    // cancel outside (if no other observers) = cancel inside
+    // cancelAll method
+    // queue in this manager, so that request can be cancelled (of: does retrofit / okttp correct cancelling on cancelling a single)
+    // (cancelForGroup method)
+
+    /**
+     * [tag] can be used for later lookup and cancellation. Request with the same [tag] will only be done
+     * once and all observers will receive the same result. [groupTag] can be used for later lookup and cancellation
+     * of a complete group.
+     */
+    data class RetroCall(val tag: String, val groupTag: String, val single: Single<out RetrofitResponse.Remote<*>>)
 
     /**
      * Downloads that are currently running. Key is the tag, value is the download task.
